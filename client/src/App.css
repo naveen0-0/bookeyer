@@ -83,11 +83,82 @@ header {
     transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.uploading{
+    margin-top: 20px;
+    position: relative;
+}
+
+.uploadingimg{
+    display: block;
+    width: 70%;
+    margin: auto;
+    opacity: 0.1;
+}
+
+.form {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    /* background-color: #34325e; */
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.formhead {
+    font-size: 34px;
+    color: white;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100px;
+    width: 80%;
+    margin: auto;
+}
+
+input[type="file"]{
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 3px;
+    background-color: rgb(231, 22, 64);
+    cursor: pointer;
+    font-family: 'Fira code';
+    font-weight: 600;
+}
+
+input[type="submit"]{
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100px;
+    margin: auto;
+    border-radius: 3px;
+    background-color: rgb(231, 22, 64);
+    font-family: 'Fira code';
+    font-weight: bold;
+}
 
 @media screen and (max-width:762px){
     .hero{
         flex-direction: column;
         justify-content: space-between;
         margin-top: 25px;
+    }
+}
+
+@media screen and (max-width:762px){
+    .form{
+        width: 80%;
+        top: 50%;
     }
 }
