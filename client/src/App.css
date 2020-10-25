@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(218, 56, 97);
+    padding: 10px;
+    color: white;
+}
+
+.title {
+    font-size: 34px;
+    flex: 1;
+    font-family: 'Quantico', sans-serif;
+}
+
+.links {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+}
+
+.link {
+    color: white;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+}
+
+.heroimg{
+    width: 100%;
+    max-height: 300px;
+}
+
+.hero{
+    min-height: 600px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.heroText{
+    flex: 1;
+    font-size: 5.4vw;
+    text-align: center;
+    font-weight: bold;
+    width: 90%;
+    margin: auto;
+    color: black;
+}
+.heroimgContainer{
+    flex: 1;
+}
+
+.upload {
+    font-size: 18px;
+    background-color: #34325e;
+    padding:8px 12px;
+    color: white;
+    border-radius: 40px;
+    width: 120px;
+    display: block;
+    margin: 20px auto;
+}
+
+.upload:hover{
+    background-color: rgb(253, 19, 66);
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+@media screen and (max-width:762px){
+    .hero{
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 25px;
+    }
+}
