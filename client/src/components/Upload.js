@@ -1,11 +1,13 @@
 import React,{ useState } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import Modal from 'react-modal';
 
 export default function Upload() {
 
     const [ file, setFile ] = useState(null);
-    const [ uploaded, setUploaded ] = useState(false)
+    const [ uploaded, setUploaded ] = useState(false);
+    const [ isModalOpen, setIsModalOpen ] = useState(false);
 
     const changeHandler = e => {
         setFile(e.target.files[0])
@@ -17,12 +19,13 @@ export default function Upload() {
         data.append('file',file)
         axios.post('/upload',data).then(res=>{
             setUploaded(res.data)
+            setIsModalOpen(true);
         })
-        setFile(null)
     }
 
-    if(uploaded){
-        return <Redirect to="/"/>
+    const CloseModal = () => {
+        setIsModalOpen(false);
+        setFile(null)
     }
 
     return (
@@ -35,9 +38,18 @@ export default function Upload() {
                     encType="multipart/form-data"
                     onSubmit={bookUpload}
                     onChange={changeHandler}
+                    className="uploadform"
                     >
-                    <input type="file" name="file" id="file" required/>
-                    <input type="submit" value="Upload" />
+                    <input type="file" name="file" id="file" required className="uploadfile"/>
+                    <input type="submit" value="Upload" className="uploadbutton"/>
+
+                    <Modal isOpen={isModalOpen} className="modal">
+                        <div >
+                            <div className="doneText">Uploaded Successfully</div>
+                            <button onClick={CloseModal} className="done">Done</button>
+                        </div>
+                    </Modal>
+
                 </form>
             </div>
         </div>
