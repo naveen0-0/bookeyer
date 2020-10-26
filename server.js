@@ -59,8 +59,10 @@ const upload = multer({ storage });
 //! Routes
 // app.use(ApiRoutes);
 
-app.post('/upload',(req,res)=>{
-   console.log("Hello");
+
+//! Uploading a file to database
+app.post('/upload',upload.single('file'),(req,res)=>{
+   res.send(true)
 })
 
 if (process.env.NODE_ENV === 'production') {
