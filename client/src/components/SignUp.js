@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 export default function SignUp() {
 
@@ -6,10 +8,32 @@ export default function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const [ msg, setMsg ] = useState("");
+    const [ signedUp, setSignedUp ] = useState(false);
+
+    const SignUpSubmit = async e => {
+        e.preventDefault();
+        if(password === confirmPassword){
+            let { data } = await axios.post('/signup',
+            { username,email,password })
+            setMsg(data.message)
+            setSignedUp(data.signedup)
+        }
+        else{
+            setMsg("Password didn't match")
+        }
+    }
+
+    // if(signedUp){
+    //     return <Redirect to="/"/>
+    // }
+
     return (
         <div>
             <div className="signuptitle">Sign up to Bookeyer</div>
-            <form className="signupform">
+            <form className="signupform" onSubmit={SignUpSubmit}>
+                <div className="msg">{msg}</div>
                 <input 
                     type="text" 
                     value={username} 
@@ -39,7 +63,7 @@ export default function SignUp() {
                     value={confirmPassword} 
                     className="confirmPassword" 
                     placeholder="Confirm your Password" 
-                    onChange={e => setConfirmPassword(e.target.value)} 
+                    onChange={e => setConfirmPassword(e.target.value)}
                     required
                 />
                 <input type="submit" value="Sign Up" className="signupbutton" />

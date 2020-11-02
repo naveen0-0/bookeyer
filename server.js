@@ -9,8 +9,8 @@ const crypto = require('crypto');
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
-const methodOverride = require('method-override');
-// const ApiRoutes = require('./routes/api');
+const authenRoutes = require('./routes/authen');
+const cookieParser = require('cookie-parser');
 
 //! Initialising App
 const app = express();
@@ -20,18 +20,22 @@ app.use(morgan('tiny'));
 app.use(helmet());
 app.use(express.json())
 dotenv.config();
+app.use(cookieParser())
 
 
 
 //! Database Connection
+const conn = mongoose.createConnection("mongodb://localhost/books", { useUnifiedTopology: true, useNewUrlParser: true });
 
-const conn = mongoose.createConnection("mongodb://localhost/books",{ useUnifiedTopology:true,useNewUrlParser:true });
+mongoose.connect("mongodb://localhost/books", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true })
+  .then(() => console.log("Mongo Success"))
+  .catch(() => console.log("Mongo Failure"))
 
-//Init gfs
+//!Init gfs
 let gfs;
-conn.once('open',() => {
-   gfs = Grid(conn.db,mongoose.mongo)
-   gfs.collection('uploads');
+conn.once('open', () => {
+  gfs = Grid(conn.db, mongoose.mongo)
+  gfs.collection('uploads');
 })
 
 //* Creating a Storage Engine
@@ -57,23 +61,23 @@ const storage = new GridFsStorage({
 const upload = multer({ storage });
 
 //! Routes
-// app.use(ApiRoutes);
+app.use(authenRoutes)
 
 
 //! Uploading a file to database
-app.post('/upload',upload.single('file'),(req,res)=>{
-   res.send(true)
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.send(true)
 })
 
 if (process.env.NODE_ENV === 'production') {
-   app.use(express.static('client/build'));
-   app.get('*', (req, res) => {
-           res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-   })
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
 }
 
 
 //! Listening PORT
 app.listen(process.env.PORT, () => {
-   console.log(`Server running on http://localhost:${process.env.PORT}`);
+  console.log(`Server running on http://localhost:${process.env.PORT}`);
 })
