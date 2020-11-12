@@ -21,7 +21,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(218, 56, 97);
+    background-color: rgb(218, 66, 20);
     padding: 10px;
     color: white;
 }
@@ -82,7 +82,7 @@ header {
     font-size: 18px;
     color: #f5f5f5;
     padding:8px 12px;
-    background-color:  rgb(253, 19, 66);
+    background-color:  rgb(218, 66, 20);
     border-radius: 40px;
     width: 120px;
     display: block;
@@ -141,7 +141,7 @@ header {
     padding: 5px 10px;
     outline: none;
     border-radius: 3px;
-    background-color: rgb(231, 22, 64);
+    background-color: rgb(218, 66, 20);
     cursor: pointer;
     font-family: 'Fira code';
     font-weight: 600;
@@ -155,7 +155,7 @@ header {
     width: 100px;
     margin: auto;
     border-radius: 3px;
-    background-color: rgb(231, 22, 64);
+    background-color: rgb(218, 66, 20);
     font-family: 'Fira code';
     font-weight: bold;
 }
@@ -173,7 +173,7 @@ header {
     outline: none;
     border: none;
     padding:5px 10px;
-    background-color: crimson;
+    background-color: rgb(218, 66, 20);
     border-radius: 3px;
     cursor: pointer;
     display: block;
@@ -285,6 +285,56 @@ header {
     text-align: center;
     font-size: 30px;
     padding: 10px 0px;
+}
+
+.person{
+    width: 30px;
+    cursor: pointer;
+}
+
+.userinfo{
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 0px;
+}
+
+.dp > img {
+    width: 100px;
+    margin: auto;
+    display: block;
+}
+
+.dp{
+    flex: 1;
+}
+
+.info{
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+    margin: auto;
+    padding: 10px 0px;
+}
+.button{
+    background:linear-gradient(to right, cornflowerblue,royalblue);
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    color: whitesmoke;
+    font-weight: 500;
+    font-family: "Fira Code";
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 @media screen and (max-width:762px){

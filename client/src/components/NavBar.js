@@ -1,36 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Axios from 'axios';
 
 export default function NavBar() {
 
-    const user = useSelector(state => state.user )
-
-    const [loggedOut, setLoggedOut] = useState(false)
-    const dispatch = useDispatch();
-
-    const GetUser = async () => {
-        let { data } = await Axios.get('/getuser');
-        dispatch({ type: "UPDATE_USER", payload: data })
-    }
-
-    if (loggedOut) {
-        GetUser();
-    }
-
-    const LogOut = async () => {
-        let { data } = await Axios.post('/logout')
-        setLoggedOut(data.loggedout)
-    }
+    const user = useSelector(state=>state.user)
 
     return (
         <header>
             <div className="title">Bookeyer</div>
                 {user.username ?
                     <div className="links">
-                        <p className="link">{user.username}</p>
-                        <button onClick={LogOut} className="link">Logout</button>
+                        <Link to="/user"><img src={require('../images/person.png')} alt="User" className="person"/></Link>
                     </div>
                     :
                     <div className="links">

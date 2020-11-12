@@ -8,6 +8,7 @@ import Hero from './components/Hero';
 import Upload from './components/Upload';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import User from './components/User';
 
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="/upload" component={Upload} />
             <Route path="/signup" component={SignUp} />
             <Route path="/login" component={Login} />
+            <Route path="/user" component={User}/>
          </Router>
       </Fragment>
    )
