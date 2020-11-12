@@ -1,8 +1,13 @@
 import React,{ useState } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import Axios from 'axios';
 
 export default function Login() {
+    const user = useSelector(state => state.user)
+
+    const dispatch = useDispatch();
 
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
@@ -17,7 +22,17 @@ export default function Login() {
         setLoggedIn(data.loggedin)
     }
 
+    const GetUser = async () => {
+        let { data } = await Axios.get('/getuser');
+        dispatch({ type:"UPDATE_USER", payload:data})
+    }
+    
     if(loggedIn){
+        GetUser();
+        return <Redirect to="/"/>
+    }
+
+    if(user.username){
         return <Redirect to="/"/>
     }
 

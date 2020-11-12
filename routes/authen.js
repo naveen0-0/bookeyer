@@ -7,43 +7,57 @@ const jwt = require('jsonwebtoken');
 //! SIGN UP
 router.post('/signup', async (req, res) => {
     const { username, email, password } = req.body;
-    let Email = await User.findOne({ email : email })
-    if(Email) return res.json({ message : "Email Already Exist's", signedup :false })
+    let Email = await User.findOne({ email: email })
+    if (Email) return res.json({ message: "Email Already Exist's" })
     let Username = await User.findOne({ username: username })
-    if(Username) return res.json({ message : "Username Already taken", signedup :false })
-    if(!Username && !Email ) {
+    if (Username) return res.json({ message: "Username Already taken" })
+    if (!Username && !Email) {
         User.create({ username, email, password })
-            .then(()=>{
+            .then(() => {
                 // VerifyEmail(email,username)
-                return res.json({ message : "Email sent, Verify email address", signedup : true })
+                return res.json({ message: "Email sent, Verify email address" })
             })
     }
 })
 
 //! LOG IN
-router.post('/login', async (req,res)=>{
+router.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    let user = await User.findOne({ username : username })
-    if(!user) return res.json({message:"Username or Password Incorrect", loggedin : false})
-    if(user.password === password) {
-        jwt.sign({ username: username }, process.env.ACCESSTOKEN,(err,token)=>{
-            res.cookie('logintoken',token)
-            return res.json({message:"Logged In", loggedin : true})
+    let user = await User.findOne({ username: username })
+    if (!user) return res.json({ message: "Username or Password Incorrect", loggedin: false })
+    if (user.password === password) {
+        jwt.sign({ username: username }, process.env.ACCESSTOKEN, (err, token) => {
+            res.cookie('logintoken', token)
+            return res.json({ message: "Logged In", loggedin: true })
         })
-    }else{
-        return res.json({message:"Password Incorrect", loggedin : false})
+    } else {
+        return res.json({ message: "Password Incorrect", loggedin: false })
     }
 })
 
 //!Get the user
-router.get('/getuser',(req,res)=>{
-    res.send("Have to get the cookie")
+router.get('/getuser', (req, res) => {
+    const token = req.cookies.logintoken
+    if (token) {
+        jwt.verify(token, process.env.ACCESSTOKEN, async (err, userObj) => {
+            let { username } = userObj;
+            let user = await User.findOne({ username: username })
+            return res.json(user)
+        })
+    } else {
+        res.json({})
+    }
+})
+
+//! Logout
+router.post('/logout', (req, res) => {
+    res.clearCookie("logintoken").json({ msg: "Logged Out", loggedout: true })
 })
 
 
 //! Verifying your Email Address
-router.get('/verify/:email',(req,res)=>{
-    User.findOneAndUpdate({email:req.params.email},{ verified:true }).then(()=>{
+router.get('/verify/:email', (req, res) => {
+    User.findOneAndUpdate({ email: req.params.email }, { verified: true }).then(() => {
         res.send("Your Email has been verified")
     })
 })
