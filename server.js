@@ -47,17 +47,12 @@ const storage = new GridFsStorage({
   url: "mongodb://localhost/books",
   file: (req, file) => {
     return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: 'uploads'
-        };
-        resolve(fileInfo);
-      });
+      const filename = file.originalname + path.extname(file.originalname);
+      const fileInfo = {
+        filename: filename,
+        bucketName: 'uploads'
+      };
+      resolve(fileInfo);
     });
   }
 });
@@ -74,11 +69,11 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 
 //@ Getting alll the files
-app.get('/books',(req,res)=>{
-  gfs.files.find().toArray((err,files)=>{
-    if(!files || files.length === 0){
+app.get('/books', (req, res) => {
+  gfs.files.find().toArray((err, files) => {
+    if (!files || files.length === 0) {
       return res.status(404).json({
-        err:"No files exiist"
+        err: "No files exiist"
       })
     }
     return res.json(files)
@@ -87,15 +82,15 @@ app.get('/books',(req,res)=>{
 
 
 //@ Getting a Single File
-app.get('/books/:filename',(req,res)=>{
-  gfs.files.findOne({filename:req.params.filename},(err,file)=>{
-    if(!file || file.length === 0){
+app.get('/books/:filename', (req, res) => {
+  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+    if (!file || file.length === 0) {
       return res.status(404).json({
-        err:"No file exists"
+        err: "No file exists"
       })
     }
-      const read = gfs.createReadStream(file.filename);
-      read.pipe(res)
+    const read = gfs.createReadStream(file.filename);
+    read.pipe(res)
   })
 })
 

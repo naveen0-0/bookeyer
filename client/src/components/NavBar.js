@@ -8,7 +8,7 @@ export default function NavBar() {
 
     return (
         <header>
-            <div className="title"><Link to="/">Bookeyer</Link></div>
+            <Link className="title" to="/">Bookeyer</Link>
                 <div><Link to="/books" className="link">Books</Link></div>
                 {user.username ?
                     <div className="links">
