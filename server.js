@@ -1,4 +1,4 @@
-//! Importing Packages
+//@ Importing Packages
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
@@ -9,13 +9,16 @@ const crypto = require('crypto');
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
-const authenRoutes = require('./routes/authen');
 const cookieParser = require('cookie-parser');
 
-//! Initialising App
+//@Route Imports
+const authenRoutes = require('./routes/authen');
+
+
+//@ Initialising App
 const app = express();
 
-//! Middleware
+//@ Middleware
 app.use(morgan('tiny'));
 app.use(helmet());
 app.use(express.json())
@@ -24,22 +27,22 @@ app.use(cookieParser())
 
 
 
-//! Database Connection
+//@ Database Connection
 const conn = mongoose.createConnection("mongodb://localhost/books", { useUnifiedTopology: true, useNewUrlParser: true });
 
 mongoose.connect("mongodb://localhost/books", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true })
   .then(() => console.log("Mongo Success"))
   .catch(() => console.log("Mongo Failure"))
 
-//!Init gfs
+//@ Init gfs
 let gfs;
 conn.once('open', () => {
   gfs = Grid(conn.db, mongoose.mongo)
   gfs.collection('uploads');
 })
 
-//* Creating a Storage Engine
 
+//@ Creating a Storage Engine
 const storage = new GridFsStorage({
   url: "mongodb://localhost/books",
   file: (req, file) => {
@@ -60,15 +63,45 @@ const storage = new GridFsStorage({
 });
 const upload = multer({ storage });
 
-//! Routes
+//@ Routes
 app.use(authenRoutes)
 
 
-//! Uploading a file to database
+//@ Uploading a file to database
 app.post('/upload', upload.single('file'), (req, res) => {
   res.send(true)
 })
 
+
+//@ Getting alll the files
+app.get('/books',(req,res)=>{
+  gfs.files.find().toArray((err,files)=>{
+    if(!files || files.length === 0){
+      return res.status(404).json({
+        err:"No files exiist"
+      })
+    }
+    return res.json(files)
+  })
+})
+
+
+//@ Getting a Single File
+app.get('/books/:filename',(req,res)=>{
+  gfs.files.findOne({filename:req.params.filename},(err,file)=>{
+    if(!file || file.length === 0){
+      return res.status(404).json({
+        err:"No file exists"
+      })
+    }
+      const read = gfs.createReadStream(file.filename);
+      read.pipe(res)
+  })
+})
+
+
+
+//@ Production Build
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
@@ -77,7 +110,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-//! Listening PORT
+//@ Listening PORT
 app.listen(process.env.PORT, () => {
   console.log(`Server running on http://localhost:${process.env.PORT}`);
 })
+

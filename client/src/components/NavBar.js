@@ -9,6 +9,7 @@ export default function NavBar() {
     return (
         <header>
             <div className="title">Bookeyer</div>
+                <div><Link to="/books" className="link">Books</Link></div>
                 {user.username ?
                     <div className="links">
                         <Link to="/user"><img src={require('../images/person.png')} alt="User" className="person"/></Link>

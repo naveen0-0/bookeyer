@@ -288,7 +288,7 @@ header {
 }
 
 .person{
-    width: 30px;
+    width: 25px;
     cursor: pointer;
 }
 
@@ -335,6 +335,14 @@ header {
     font-family: "Fira Code";
     border-radius: 3px;
     cursor: pointer;
+}
+
+.getBook{
+    outline: none;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    background: linear-gradient(to right,royalblue,cornflowerblue);
 }
 
 @media screen and (max-width:762px){
