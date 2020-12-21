@@ -17,38 +17,33 @@ a {
 }
 
 header {
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(218, 66, 20);
+    background-color: #1e9480;
     padding: 10px;
-    color: white;
+}
+
+.head{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .title {
     font-size: 34px;
+    color: #000000;
     flex: 1;
     font-family: 'Quantico', sans-serif;
 }
 
-.links {
-    flex: 1;
-    display: flex;
-    justify-content: space-around;
-}
-
 .link {
-    color: white;
-    font-family: 'Fira Code', monospace;
-    font-size: 12px;
-    background-color: #33343a;
-    padding: 5px 10px;
-    border-radius: 3px;
-    box-shadow: 3px 3px 3px #69162b;
-    border: none;
-    cursor: pointer;
+    background:linear-gradient(to right,rgb(226, 135, 15),rgb(223, 66, 26));
+    padding: 6px 10px;
+    color: whitesmoke;
     outline: none;
+    border: none;
+    border-radius: 20px;
+    font-size: 12px;
 }
 
 .heroimg{
@@ -147,202 +142,98 @@ header {
     font-weight: 600;
 }
 
-.uploadbutton{
-    outline: none;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    width: 100px;
-    margin: auto;
-    border-radius: 3px;
-    background-color: rgb(218, 66, 20);
-    font-family: 'Fira code';
-    font-weight: bold;
-}
-
-.uploadbutton:active{
-    background-color: #34325e;
-}
-
-.doneText {
-    text-align: center;
-    font-size: 36px;
-}
-
-.done {
-    outline: none;
-    border: none;
-    padding:5px 10px;
-    background-color: rgb(218, 66, 20);
-    border-radius: 3px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto;
-    width: 300px;
-    font-family: 'Fira code';
-    font-size: 20px;
-    box-shadow: 3px 3px 3px rgb(43, 40, 40);
-}
-
-.done:active {
-    background-color: #34325e;
-}
-
-.modal {
-    background-color: rgb(75, 71, 71);
-    width: 80%;
-    height: 200px;
-    margin: auto;
-    padding: 10px;
-    border-radius: 3px;
-    outline: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.signuptitle{
-    font-size: 32px;
-    text-align: center;
-    font-weight: bold;
+.uploadbtn{
     color: whitesmoke;
-    padding: 20px;
-}
-
-.signupform{
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 80%;
-    margin: auto;
-}
-
-.username,.password,.email,.confirmPassword{
-    outline: none;
-    border: none;
-    padding: 8px 10px;
-    border-radius: 3px;
-    color: rgb(214, 206, 206);
-    font-family: 'Fira Code';
-    font-weight: 600;
-    background-color: #18181a;
-}
-
-.signupbutton,.loginbutton{
-    width: 100px;
-    padding: 8px 10px;
+    font-size: 18px;
+    background:linear-gradient(to right,rgb(226, 135, 15),rgb(223, 66, 26));
+    padding:8px 12px;
     border-radius: 20px;
     outline: none;
-    border: none;
-    background:linear-gradient(to right,cornflowerblue,royalblue);
-    color: white;
-    font-size: 14px;
+    border:none;
     cursor: pointer;
-    font-family: 'Fira Code';
-    font-weight: 500;
 }
 
-/**  Login Page Styles*/
-.logintitle{
+.uploadbtn1{
+    /* width: 100px; */
+    color: whitesmoke;
+    background:linear-gradient(to right,rgb(226, 135, 15),rgb(223, 66, 26));
+    font-size: 3vw;
+    padding: 6px 20px;
+    border-radius:20px
+}
+
+.uploadDone{
+    display: none;
+    background-color: rgb(76, 68, 70);
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+
+.success{
     font-size: 32px;
-    color: whitesmoke;
+    color: #ce8e06;
     text-align: center;
-    padding: 20px;
 }
 
-.loginform{
-    width: 80%;
-    margin: auto;
-    height: 160px;
+.success-btn{
+    background:linear-gradient(to right,cornflowerblue,royalblue);
+    outline: none;
+    border: none;
+    font-size: 18px;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.uploadDoneShow{
+    display: flex;
+}
+
+.books{
+    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+}
+
+.book{
+    background-color:#413d3d;
+    width: 90%;
+    margin:15px auto;
+    color: whitesmoke;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border-radius: 4px;
+    padding: 10px 20px;
+    box-shadow:2px 2px 8px #1a1818;
 }
 
-.loginusername,.loginpassword{
-    outline: none;
-    background-color: #18181a;
-    border: none;
-    padding: 8px 10px;
-    font-family: "Fira Code";
-    font-weight: 700;
-    color: whitesmoke;
-}
-
-.msg{
-    color: wheat;
-    text-align: center;
-}
-
-.permission{
+.booksHead{
     color: whitesmoke;
     text-align: center;
-    font-size: 30px;
-    padding: 10px 0px;
+    font-size:22px;
+    padding:10px
 }
 
-.person{
-    width: 25px;
-    cursor: pointer;
+.name{
+    min-height: 100px;
+    word-wrap: break-word
 }
 
-.userinfo{
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    padding: 30px 0px;
-}
-
-.dp > img {
-    width: 100px;
-    margin: auto;
-    display: block;
-}
-
-.dp{
-    flex: 1;
-}
-
-.info{
-    display: flex;
-    flex: 3;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-}
-
-
-.buttons{
-    display: flex;
-    justify-content: space-around;
-    width: 200px;
-    margin: auto;
-    padding: 10px 0px;
-}
-.button{
-    background:linear-gradient(to right, cornflowerblue,royalblue);
-    outline: none;
-    border: none;
-    padding: 5px 10px;
-    color: whitesmoke;
-    font-weight: 500;
-    font-family: "Fira Code";
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.getBook{
-    outline: none;
-    border: none;
+.book button{
+    border-radius: 10px;
     padding: 5px 8px;
+    font-family: Fira Code;
+    outline: none;
+    border: none;
+    padding: 10px;
+    margin: 5px;
     cursor: pointer;
-    background: linear-gradient(to right,royalblue,cornflowerblue);
+    background-color:#1e9480;
 }
 
 @media screen and (max-width:762px){

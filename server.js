@@ -11,8 +11,6 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const cookieParser = require('cookie-parser');
 
-//@Route Imports
-const authenRoutes = require('./routes/authen');
 
 
 //@ Initialising App
@@ -58,13 +56,11 @@ const storage = new GridFsStorage({
 });
 const upload = multer({ storage });
 
-//@ Routes
-app.use(authenRoutes)
 
 
 //@ Uploading a file to database
 app.post('/upload', upload.single('file'), (req, res) => {
-  res.send(true)
+  res.send({uploaded:true})
 })
 
 
