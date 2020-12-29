@@ -31,19 +31,18 @@ header {
 
 .title {
     font-size: 34px;
-    color: #000000;
+    color: #ffffff;
     flex: 1;
     font-family: 'Quantico', sans-serif;
 }
 
 .link {
-    background:linear-gradient(to right,rgb(226, 135, 15),rgb(223, 66, 26));
     padding: 6px 10px;
     color: whitesmoke;
     outline: none;
     border: none;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .heroimg{
@@ -133,33 +132,34 @@ header {
 }
 
 .uploadfile{
-    padding: 5px 10px;
+    padding: 6px 12px;
+    color: whitesmoke;
     outline: none;
     border-radius: 3px;
-    background-color: rgb(218, 66, 20);
+    background-color:#1a1818;
     cursor: pointer;
     font-family: 'Fira code';
     font-weight: 600;
 }
 
 .uploadbtn{
-    color: whitesmoke;
-    font-size: 18px;
-    background:linear-gradient(to right,rgb(226, 135, 15),rgb(223, 66, 26));
-    padding:8px 12px;
-    border-radius: 20px;
+    width: 80px;
+    margin: auto;
+    background:linear-gradient(to right,cornflowerblue,royalblue);
     outline: none;
-    border:none;
+    border: none;
+    padding:6px 12px;
+    border-radius: 20px;
+    color: whitesmoke;
     cursor: pointer;
 }
 
 .uploadbtn1{
-    /* width: 100px; */
+    background:linear-gradient(to right,cornflowerblue,royalblue);
     color: whitesmoke;
-    background:linear-gradient(to right,rgb(226, 135, 15),rgb(223, 66, 26));
-    font-size: 3vw;
-    padding: 6px 20px;
-    border-radius:20px
+    font-size: 20px;
+    padding: 10px 18px;
+    border-radius: 22px;
 }
 
 .uploadDone{
@@ -235,6 +235,72 @@ header {
     cursor: pointer;
     background-color:#1e9480;
 }
+
+.book button:active {
+    background-color:#166659;
+}
+
+.spinner{
+    width: 100px;
+    margin:auto;
+    margin-top: 40px;
+}
+
+.spinner img{
+    width: 80px
+}
+
+/* @ File Conversions */
+.allfileconversions{
+    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap: 10px;
+    width: 90%;
+    margin: auto;
+}
+
+.fileconversion{
+    background-color:#1e9480;
+    padding: 6px 18px;
+    border-radius: 4px;
+    color: whitesmoke;
+    font-size: 14px;
+}
+
+.pdftodocxform{
+    width: 80%;
+    height:120px;
+    margin: auto;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+    padding: 10px 20px;
+}
+
+.pdftodocxfile{
+    outline: none;
+    border: none;
+    background-color:#3a3636;
+    padding: 10px;
+    color: whitesmoke;
+    font-family:"Fira Code";
+    cursor: pointer
+}
+
+.pdftodocxbtn{
+    width: 80px;
+    margin: auto;
+    background:linear-gradient(to right,cornflowerblue,royalblue);
+    outline: none;
+    border: none;
+    padding:6px 12px;
+    border-radius: 4px;
+    color: whitesmoke;
+    cursor: pointer;
+    font-family: "Fira Code";
+}
+/* ! PDF TO DOCX */
+
 
 @media screen and (max-width:762px){
     .hero{

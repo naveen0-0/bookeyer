@@ -37,7 +37,7 @@ export default function Upload() {
             <div className="form">
                 <div className="formhead">Upload a Book or Pdf</div>
                 <form method="POST" encType="multipart/form-data" onSubmit={bookUpload} onChange={changeHandler} className="uploadform">
-                    <input type="file" name="file" id="file" required className="uploadfile" />
+                    <input type="file" name="file" id="file" required className="uploadfile" accept="application/pdf"/>
                     <input type="submit" value="Upload" className="uploadbtn" />
                 </form>
 

@@ -26,12 +26,12 @@ export default function Books() {
     }
 
     if (!available) {
-        return <div>Nothing</div>
+        return <div className="spinner"><img src={require('../images/loading.svg')} alt="Loading"/></div>
     }
 
     return (
         <Fragment>
-        <div className="booksHead">Download the Available Books</div>
+            <div className="booksHead">Download the Available Books</div>
             <div className="books">
                 {books.map(book => (
                     <div key={book._id} className="book">
