@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default function Upload() {
 
-    const [ uploaded, setUploaded ] = useState(false)
+    const [uploaded, setUploaded] = useState(false)
     const [file, setFile] = useState(null);
 
     const changeHandler = e => {
@@ -25,7 +25,7 @@ export default function Upload() {
         uploadDone.classList.remove("uploadDoneShow")
     }
 
-    if(uploaded){
+    if (uploaded) {
         const uploadDone = document.querySelector(".uploadDone");
         uploadDone.classList.add("uploadDoneShow")
     }
@@ -36,8 +36,10 @@ export default function Upload() {
             <div><img src={require('../images/uploadred.svg')} alt="Upload" className="uploadingimg" /></div>
             <div className="form">
                 <div className="formhead">Upload a Book or Pdf</div>
+
+
                 <form method="POST" encType="multipart/form-data" onSubmit={bookUpload} onChange={changeHandler} className="uploadform">
-                    <input type="file" name="file" id="file" required className="uploadfile" accept="application/pdf"/>
+                    <input type="file" name="file" id="file" required className="uploadfile" />
                     <input type="submit" value="Upload" className="uploadbtn" />
                 </form>
 

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: rgb(34, 32, 32);
 }
 
@@ -21,7 +21,7 @@ header {
     padding: 10px;
 }
 
-.head{
+.head {
     width: 90%;
     margin: auto;
     display: flex;
@@ -45,12 +45,12 @@ header {
     font-size: 14px;
 }
 
-.heroimg{
+.heroimg {
     width: 100%;
     max-height: 300px;
 }
 
-.hero{
+.hero {
     min-height: 600px;
     display: flex;
     justify-content: space-around;
@@ -59,7 +59,7 @@ header {
     margin: auto;
 }
 
-.heroText{
+.heroText {
     flex: 1;
     font-size: 5.4vw;
     text-align: center;
@@ -68,15 +68,16 @@ header {
     margin: auto;
     color: whitesmoke;
 }
-.heroimgContainer{
+
+.heroimgContainer {
     flex: 1;
 }
 
 .upload {
-    font-size: 18px;
+    font-size: 5.4vw;
     color: #f5f5f5;
-    padding:8px 12px;
-    background-color:  rgb(218, 66, 20);
+    padding: 8px 12px;
+    background-color: rgb(218, 66, 20);
     border-radius: 40px;
     width: 120px;
     display: block;
@@ -85,17 +86,17 @@ header {
     font-weight: 500;
 }
 
-.upload:hover{
-    background-color:rgb(190, 30, 30);
+.upload:hover {
+    background-color: rgb(190, 30, 30);
     transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.uploading{
+.uploading {
     margin-top: 20px;
     position: relative;
 }
 
-.uploadingimg{
+.uploadingimg {
     display: block;
     width: 70%;
     margin: auto;
@@ -106,7 +107,7 @@ header {
     position: absolute;
     top: 30%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 50%;
     margin: auto;
     text-align: center;
@@ -131,38 +132,38 @@ header {
     margin: auto;
 }
 
-.uploadfile{
+.uploadfile {
     padding: 6px 12px;
     color: whitesmoke;
     outline: none;
     border-radius: 3px;
-    background-color:#1a1818;
+    background-color: #1a1818;
     cursor: pointer;
     font-family: 'Fira code';
     font-weight: 600;
 }
 
-.uploadbtn{
+.uploadbtn {
     width: 80px;
     margin: auto;
-    background:linear-gradient(to right,cornflowerblue,royalblue);
+    background: linear-gradient(to right, cornflowerblue, royalblue);
     outline: none;
     border: none;
-    padding:6px 12px;
+    padding: 6px 12px;
     border-radius: 20px;
     color: whitesmoke;
     cursor: pointer;
 }
 
-.uploadbtn1{
-    background:linear-gradient(to right,cornflowerblue,royalblue);
+.uploadbtn1 {
+    background: linear-gradient(to right, cornflowerblue, royalblue);
     color: whitesmoke;
     font-size: 20px;
     padding: 10px 18px;
     border-radius: 22px;
 }
 
-.uploadDone{
+.uploadDone {
     display: none;
     background-color: rgb(76, 68, 70);
     position: absolute;
@@ -174,14 +175,14 @@ header {
     cursor: pointer;
 }
 
-.success{
+.success {
     font-size: 32px;
     color: #ce8e06;
     text-align: center;
 }
 
-.success-btn{
-    background:linear-gradient(to right,cornflowerblue,royalblue);
+.success-btn {
+    background: linear-gradient(to right, cornflowerblue, royalblue);
     outline: none;
     border: none;
     font-size: 18px;
@@ -189,42 +190,41 @@ header {
     border-radius: 20px;
 }
 
-.uploadDoneShow{
+.uploadDoneShow {
     display: flex;
 }
 
-.books{
+.books {
     display: grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.book{
-    background-color:#413d3d;
+.book {
+    background-color: #413d3d;
     width: 90%;
-    margin:15px auto;
+    margin: 15px auto;
     color: whitesmoke;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 10px 20px;
-    box-shadow:2px 2px 8px #1a1818;
+    box-shadow: 2px 2px 8px #1a1818;
 }
 
-.booksHead{
+.booksHead {
     color: whitesmoke;
     text-align: center;
-    font-size:22px;
-    padding:10px
+    font-size: 22px;
+    padding: 10px
 }
 
-.name{
+.name {
     min-height: 100px;
     word-wrap: break-word
 }
 
-.book button{
+.book button {
     border-radius: 10px;
     padding: 5px 8px;
     font-family: Fira Code;
@@ -233,85 +233,120 @@ header {
     padding: 10px;
     margin: 5px;
     cursor: pointer;
-    background-color:#1e9480;
+    background-color: #1e9480;
 }
 
 .book button:active {
-    background-color:#166659;
+    background-color: #166659;
 }
 
-.spinner{
+.spinner {
     width: 100px;
-    margin:auto;
+    margin: auto;
     margin-top: 40px;
 }
 
-.spinner img{
+.spinner img {
     width: 80px
 }
 
-/* @ File Conversions */
-.allfileconversions{
+/* * All File Conversions */
+.allConversionsHeading {
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    color: whitesmoke;
+}
+
+.allFileConversions {
     display: grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
     width: 90%;
     margin: auto;
 }
 
-.fileconversion{
-    background-color:#1e9480;
-    padding: 6px 18px;
-    border-radius: 4px;
-    color: whitesmoke;
-    font-size: 14px;
-}
-
-.pdftodocxform{
-    width: 80%;
-    height:120px;
-    margin: auto;
-    display: flex;
-    flex-direction:column;
-    justify-content: space-around;
-    padding: 10px 20px;
-}
-
-.pdftodocxfile{
-    outline: none;
-    border: none;
-    background-color:#3a3636;
+.fileConversion {
+    background-color: rgb(8, 143, 132);
     padding: 10px;
+    text-align: center;
     color: whitesmoke;
-    font-family:"Fira Code";
-    cursor: pointer
+    border-radius: 5px;
 }
 
-.pdftodocxbtn{
-    width: 80px;
+
+/* $ Pdf to Docx */
+.pdftodocx {
+    color: whitesmoke;
+    font-size: 22px;
+    text-align: center;
+    padding: 20px
+}
+
+.pdftodocxform {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 90%;
     margin: auto;
-    background:linear-gradient(to right,cornflowerblue,royalblue);
-    outline: none;
-    border: none;
-    padding:6px 12px;
-    border-radius: 4px;
+}
+
+.pdftodocxfile {
+    background-color: #1a1818;
+    padding: 10px;
+    font-family: "Fira Code";
     color: whitesmoke;
     cursor: pointer;
-    font-family: "Fira Code";
+    outline: none;
+    border: none;
 }
-/* ! PDF TO DOCX */
+
+.pdftodocxbutton {
+    width: 90px;
+    margin: auto;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(to right, rgb(0, 128, 111), rgb(93, 184, 171));
+    font-size: 14px;
+    border-radius: 2px;
+    font-family: "Fira Code";
+    color: white
+}
+
+.pdftodocxbutton:hover {
+    background: linear-gradient(to left, rgb(0, 128, 111), rgb(93, 184, 171));
+}
+
+.downloadPdf button {
+    width: 90px;
+    padding: 10px;
+    background-color: #166659;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
 
 
-@media screen and (max-width:762px){
-    .hero{
+video {
+    outline: none;
+    border: none;
+}
+
+
+@media screen and (max-width:762px) {
+    .hero {
         flex-direction: column;
         justify-content: space-between;
         margin-top: 25px;
     }
 }
 
-@media screen and (max-width:762px){
-    .form{
+@media screen and (max-width:762px) {
+    .form {
         width: 80%;
         top: 50%;
     }

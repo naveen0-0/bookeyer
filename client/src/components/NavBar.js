@@ -8,7 +8,7 @@ export default function NavBar() {
             <div className="head">
                 <Link className="title" to="/">Bookeyer</Link>
                 <Link to="/books" className="link">Books</Link>
-                <Link to="/file-conversion" className="link">FileConversion</Link>
+                <Link to="/videos" className="link">videos</Link>
             </div>
         </header>
     )

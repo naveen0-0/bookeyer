@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import Axios from 'axios';
 import { saveAs } from 'file-saver';
 
-export default function Books() {
+export default function Videos() {
 
     const [available, setAvailale] = useState(false);
     const [books, setBooks] = useState([])
@@ -31,15 +31,14 @@ export default function Books() {
 
     return (
         <Fragment>
-            <div className="booksHead">Download the Available Books</div>
+            <div className="booksHead">Available Videos</div>
             <div className="books">
                 {books.map(book => {
-                    if (book.contentType === "application/pdf") {
+                    if (book.contentType === "video/mp4") {
                         return (
-                            <div key={book._id} className="book">
-                                <div className="name">{book.filename}</div>
-                                <button onClick={() => downloadBook(book.filename, book.contentType)} className="download">Download</button>
-                            </div>
+                            <video key={book._id} className="book" controls>
+                                <source src={`/books/${book.filename}`}></source>
+                            </video>
                         )
                     }
                 })}

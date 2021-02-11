@@ -7,8 +7,7 @@ import NavBar from './components/NavBar';
 import Hero from './components/Hero';
 import Upload from './components/Upload';
 import Books from './components/Books';
-import AllFileConversions from './components/FileConversion/allFileConversions';
-import PdfToDocx from './components/FileConversion/pdfToDocx';
+import Videos from './components/Videos';
 
 
 export default function App() {
@@ -19,8 +18,7 @@ export default function App() {
             <Route path="/" exact component={Hero} />
             <Route path="/upload" component={Upload} />
             <Route path="/books" component={Books} />
-            <Route path="/file-conversion" component={AllFileConversions}/>
-            <Route path="/pdf-to-docx" component={PdfToDocx}/>
+            <Route path="/videos" component={Videos} />
          </Router>
       </Fragment>
    )

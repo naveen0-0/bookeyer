@@ -9,7 +9,7 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const cookieParser = require('cookie-parser');
-const ConversionRoutes = require('./routes');
+const ConversionRoutes = require('./router');
 
 //! Initialising App
 const app = express();
@@ -43,7 +43,7 @@ const storage = new GridFsStorage({
   url: "mongodb://localhost/books",
   file: (req, file) => {
     return new Promise((resolve, reject) => {
-      const filename = file.originalname + path.extname(file.originalname);
+      const filename = file.originalname;
       const fileInfo = {
         filename: filename,
         bucketName: 'uploads'
@@ -103,4 +103,3 @@ if (process.env.NODE_ENV === 'production') {
 app.listen(process.env.PORT, () => {
   console.log(`Server running on http://localhost:${process.env.PORT}`);
 })
-
