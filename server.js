@@ -24,9 +24,9 @@ app.use(ConversionRoutes);
 app.use(express.static(__dirname + "/uploads"))
 
 //! Database Connection
-const conn = mongoose.createConnection("mongodb://localhost/books", { useUnifiedTopology: true, useNewUrlParser: true });
+const conn = mongoose.createConnection(process.env.MONGOURL || "mongodb://localhost/books", { useUnifiedTopology: true, useNewUrlParser: true });
 
-mongoose.connect("mongodb://localhost/books", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true })
+mongoose.connect(process.env.MONGOURL || "mongodb://localhost/books", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true })
   .then(() => console.log("Mongo Success"))
   .catch(() => console.log("Mongo Failure"))
 
@@ -40,7 +40,7 @@ conn.once('open', () => {
 
 //! Creating a Storage Engine
 const storage = new GridFsStorage({
-  url: "mongodb://localhost/books",
+  url: process.env.MONGOURL || "mongodb://localhost/books",
   file: (req, file) => {
     return new Promise((resolve, reject) => {
       const filename = file.originalname;
